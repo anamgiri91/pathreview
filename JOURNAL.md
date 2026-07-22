@@ -15,7 +15,7 @@ The `docs/ARCHITECTURE.md` file mentions that the retrieval system blends vector
 
 **Setup confirmation:** [x] App runs locally at localhost:5173
 
-**Cohort ledger:** [ ] Issue added to cohort ledger
+**Cohort ledger:** [x] Issue added to cohort ledger
 
 ## Issue Selection Checklist Reasoning
 
