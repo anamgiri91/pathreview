@@ -73,3 +73,22 @@ Cross-reference the reproduction test file directly in the PR description (sub-t
 
 **Blockers:**
 None currently. The pre-commit hooks in this repo fail on unrelated pre-existing type-annotation gaps (noted in PLAN.md's risks section), so I've been using `git commit --no-verify` for my commits — worth double-checking with a mentor whether that's the expected workaround or if there's a preferred approach in this cohort.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** https://github.com/ascherj/pathreview/pull/724
+
+**Branch:** docs/36-hybrid-retrieval-scoring-formula
+
+**What you built:**
+Added a "Hybrid Retrieval Scoring" section to `docs/ARCHITECTURE.md` documenting the previously-unexplained blending formula, default weights (0.7 vector / 0.3 keyword), per-result-set normalization, and a worked numeric example.
+
+**Tests added or updated:**
+Created `tests/unit/test_hybrid_retriever.py` with 4 tests: confirms the default weight values, confirms the blended score matches a hand-calculated example across 4 sample chunks, confirms normalization is computed per-result-set (not globally), and confirms a chunk needs to appear in only one of the two result sets to receive a score.
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+(182 pre-existing lint errors and 53 pre-existing test failures confirmed unchanged before/after my changes — see PR description for full baseline. My changes introduce no new failures.)
+
+**Draft PR feedback received from:** none — posted for review but did not receive feedback before the deadline
