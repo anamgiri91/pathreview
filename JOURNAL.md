@@ -92,3 +92,34 @@ Created `tests/unit/test_hybrid_retriever.py` with 4 tests: confirms the default
 (182 pre-existing lint errors and 53 pre-existing test failures confirmed unchanged before/after my changes — see PR description for full baseline. My changes introduce no new failures.)
 
 **Draft PR feedback received from:** none — posted for review but did not receive feedback before the deadline
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No reviewer feedback came in. Per the Su26 cohort note, reviewer feedback isn't a feature this term, so I didn't expect any beyond what I requested informally.
+
+**How you responded:**
+N/A — no feedback to respond to.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+The hardest part ended up being Git, not the documentation itself. I ran into several issues while rewriting commit messages with interactive rebase. At one point I accidentally merged lines while editing the rebase todo list in vim. Later, I had a rebase complete successfully, only to discover that it had silently dropped a WatchlistEntry model because there wasn't any overlapping code for Git to mark as a conflict. I also spent more time than expected dealing with terminal issues, especially when trying to paste multi-line markdown tables with pipe characters, since the shell kept interpreting them incorrectly. The actual documentation work wasn't the difficult part—it was all the tooling around it.
+
+**What did you learn about working in a large codebase?**
+One of the biggest lessons I learned is that a successful rebase doesn't necessarily mean everything is still correct. Git only reports conflicts when the same lines overlap, so code can disappear without any warning if it only exists on one branch. I only caught the missing class because I ran the test suite immediately after rebasing instead of assuming everything was fine. I also learned that in a large, established project, there will often be existing lint or test failures that aren't related to your work. Instead of trying to fix everything, it's more important to establish a baseline before making changes so you can show that your work didn't introduce any new problems.
+
+**How did AI tools help — and where did they fall short?**
+AI was most helpful for challenging my own thinking. Asking it for counterarguments to my design decisions helped me notice weaknesses I probably would have overlooked otherwise. It also sped up writing the reproduction test by helping generate mocked scenarios and verify the expected results. Where it wasn't as helpful was troubleshooting terminal and Git issues. Things like vim editing, shell escaping, heredocs, and rebase problems depended heavily on what was happening in my local environment, so they usually required several rounds of trial and error instead of a single solution.
+
+**What would you do differently if you started over?**
+I spent a lot of time just trying to understand the codebase before I felt comfortable making any changes. Most of that time went into tracing through files like hybrid.py, understanding the retriever's normalization logic, and figuring out how everything fit together. If I started over, I'd use AI more during that learning phase. Instead of reading every file line by line first, I'd ask it to explain unfamiliar functions, summarize what different files were responsible for, and point out which sections were actually relevant to my issue. I mainly used AI to critique my ideas and help with testing, but I think I could have saved a lot of time by using it more to understand the codebase itself.
+
+**What are you most proud of from this module?**
+I'm most proud of noticing that _get_all_chunks() in HybridRetriever.retrieve() fetches every chunk but never actually uses the result. That wasn't something I was looking for—I found it by carefully reading through the implementation while writing the documentation. It was satisfying to understand the code well enough to catch a detail like that instead of just describing the feature at a high level.
